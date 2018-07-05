@@ -31,7 +31,21 @@
 		<p>現在、作成中です。。。</p>
 	</aside>
 	<nav class="next-step">
-		<a href="javascript:alert('ごめんなさい。まだできていません。');" class="go-to-next">次へすすむ</a>
+		<a href="javascript:alert('ごめんなさい。まだできていません。');" 
+			data-click-event-label="click_go_to_next"
+			class="go-to-next">次へすすむ</a>
 	</nav>
+	<script>
+		(function(){
+			var clickableElements = document.querySelectorAll('[data-click-event-label]');
+			clickableElements.forEach(function(e){
+				e.addEventListener('click', function(event){
+					var target = event.target;
+					var eventLabel = target.dataset['clickEventLabel'];
+					gtag('event', eventLabel);
+				});
+			});
+		})();
+	</script>
 </body>
 </html>
