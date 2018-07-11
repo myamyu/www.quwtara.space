@@ -19,10 +19,25 @@ module.exports = {
 	module: {
 		rules: [
 			{
+				test: /\.css$/,
+				use: [
+					'vue-style-loader',
+					'css-loader'
+				],
+			},
+			{
 				test: /\.vue$/,
 				use: [
 					{
-						loader: 'vue-loader'
+						loader: 'vue-loader',
+						options: {
+							loaders: {
+								css: [
+									'vue-style-loader',
+									'css-loader'
+								]
+							}
+						}
 					}
 				]
 			}
