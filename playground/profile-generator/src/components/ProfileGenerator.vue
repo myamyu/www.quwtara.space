@@ -7,7 +7,7 @@
 				data-size="large" 
 				v-bind:data-text="result" 
 				data-url="https://www.quwtara.space/playground/profile-generator/" 
-				data-hashtags="quwtara-profile-generator" 
+				data-hashtags="quwtara_profile_generator" 
 				data-related="myamyu" 
 				data-show-count="true">Tweet</a>
 			<span id="quwtaraProfileGeneratorTweetArea"></span>
