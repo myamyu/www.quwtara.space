@@ -8,7 +8,7 @@ const store = ProfileStore();
 store.commit('reload');
 
 const app = new Vue({
-	el: '#app',
+	el: '#quwtaraProfileGeneratorApp',
 	store,
 	components: {ProfileGenerator}
 });

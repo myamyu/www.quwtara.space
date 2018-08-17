@@ -1,16 +1,16 @@
 <template>
 	<div class="profile-generator">
-		<p id="profileGeneratorResult">
-			{{age1}}ぐらいの時が一番女の子してたと思う{{wara}}
-			{{age2}}の{{area}}産の都内住み{{person}}です{{star}}
-			基本カギなしだから仲良くしてくれる人フォロー嬉しいな{{face}}
-			好き{{arrow}}{{likes}}/
-			{{angry}}嫌い{{hate}} 
-			❤️FF外の絡み無言フォロー大丈夫です❢
-		</p>
+		<p id="quwtaraProfileGeneratorResult">{{age1}}ぐらいの時が一番女の子してたと思う{{wara}}{{age2}}の{{area}}産の都内住み{{person}}です{{star}}基本カギなしだから仲良くしてくれる人フォロー嬉しいな{{face}}好き{{arrow}}{{likes}}/{{angry}}嫌い{{hate}} ❤️FF外の絡み無言フォロー大丈夫です❢</p>
 		<div class="buttons">
 			<a href="javascript:void(0);" v-on:click="reload()" class="reload">リロード</a>
-			<a href="javascript:void(0);" v-on:click="tweet()" class="tweet">ツイート</a>
+			<a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button-template"
+				data-size="large" 
+				v-bind:data-text="result" 
+				data-url="https://www.quwtara.space/playground/profile-generator/" 
+				data-hashtags="quwtara-profile-generator" 
+				data-related="myamyu" 
+				data-show-count="true">Tweet</a>
+			<span id="quwtaraProfileGeneratorTweetArea"></span>
 		</div>
 	</div>
 </template>
@@ -22,18 +22,48 @@
 	font-family: Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	width: 300px;
 }
-#profileGeneratorResult {
+#quwtaraProfileGeneratorResult {
 	color: #14171a;
 	font-size: 14px;
 	font-weight: normal;
-	line-height: 20px;
-	margin: 0 auto;
+	line-height: 22px;
+	margin: 1em auto;
+	min-height: 150px;
 	width: 260px;
 	word-wrap: break-word;
+}
+.buttons {
+	display: flex;
+	flex-direction: row;
+	height: 44px;
+	justify-content: space-around;
+}
+.reload {
+	background-color: #FFFFFF;
+	border: solid 1px;
+	border-radius: 4px;
+	box-sizing: border-box;
+	display: inline-block;
+	height: 28px;
+	line-height: 28px;
+	width: 93px;
+	text-align: center;
+	text-decoration: none;	
+}
+#quwtaraProfileGeneratorTweetArea {
+	min-width: 93px;
+}
+.twitter-share-button-template {
+	display: none;
 }
 </style>
 <script>
 export default {
+	data () {
+		return {
+			res: ''
+		};
+	},
 	computed: {
 		age1 () {
 			return this.$store.state.age1;
@@ -67,15 +97,37 @@ export default {
 		},
 		hate () {
 			return this.$store.state.hate;
+		},
+		result() {
+			return `${this.res}\n`;
 		}
 	},
 	methods: {
 		reload () {
 			this.$store.commit('reload');
 		},
-		tweet () {
-			return;
+		refreshTweet () {
+			const res = document.getElementById('quwtaraProfileGeneratorResult');
+			this.res = res ? res.textContent : '？？？？ミスったかも。ごめん。';
+			const d = document;
+			const buttonTmpl = d.getElementsByClassName('twitter-share-button-template')[0];
+			const button = buttonTmpl.cloneNode();
+			button.classList.add('twitter-share-button');
+			const tweetArea = d.getElementById('quwtaraProfileGeneratorTweetArea');
+			tweetArea.innerHTML = '';
+			tweetArea.appendChild(button);
+
+			const sc = d.createElement('script'),
+				hd = d.getElementsByTagName('head')[0];
+			sc.src = 'https://platform.twitter.com/widgets.js';
+			hd.appendChild(sc);
 		}
+	},
+	mounted () {
+		this.refreshTweet();
+	},
+	updated () {
+		this.refreshTweet();
 	}
 };
 </script>
