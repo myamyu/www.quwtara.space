@@ -12,6 +12,9 @@
 				data-show-count="true">Tweet</a>
 			<span id="quwtaraProfileGeneratorTweetArea"></span>
 		</div>
+		<div class="signature">
+			by <a href="https://www.quwtara.space/playground/profile-generator/" target="_blank">Quwtara Profile Generator</a>
+		</div>
 	</div>
 </template>
 <style scoped>
@@ -55,6 +58,11 @@
 }
 .twitter-share-button-template {
 	display: none;
+}
+.signature {
+	font-size: 12px;
+	padding: 0px 25px 16px;
+	text-align: right;
 }
 </style>
 <script>
