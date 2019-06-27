@@ -4,12 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
   <title>iOS、ズームしないでほしい</title>
-  <style>
-    
-  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script>
+    $(function(){
+      $('#pckr').flatpickr({
+        dateFormat: 'Y年 m月 d日',
+        mode: 'range',
+      });
+    });
+  </script>
 </head>
 <body>
   <h1>iOSでズームしたら嫌</h1>
+  <div>
+    <input type="text" id="pckr">
+  </div>
   <p>
     じゅげむじゅげむ　ごこうのすりきれ　かいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつ　くうねるところにすむところ　やぶらこうじのぶらこうじ　ぱいぽぱいぽぱいぽのしゅーりんがん　しゅーりんがんのぐーりんだい　ぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ
     じゅげむじゅげむ　ごこうのすりきれ　かいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつ　くうねるところにすむところ　やぶらこうじのぶらこうじ　ぱいぽぱいぽぱいぽのしゅーりんがん　しゅーりんがんのぐーりんだい　ぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ
