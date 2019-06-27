@@ -7,20 +7,63 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/ja.js"></script>
   <script>
     $(function(){
       $('#pckr').flatpickr({
-        dateFormat: 'Y年 m月 d日',
+        'allowInput': false,
+        'ariaDateFormat': 'Y-m-d',
+        dateFormat: 'Y/m/d (D)',
+        locale: 'ja',
         mode: 'range',
+        wrap: true,
       });
     });
   </script>
+  <style>
+    #pckr > dd{
+      margin: 0;
+    }
+
+    input[data-input] {
+      width: 100%;
+      line-height: 1.8;
+      padding: 4px;
+      box-sizing: border-box;
+    }
+
+    .flatpickr-calendar {
+      width: unset;
+      left: auto !important;
+      right: auto !important;
+      padding: 12px 0;
+      border: solid 2px #bcb6b3;
+      font-size: 14px;
+      margin-right: 6px;
+    }
+    .flatpickr-calendar::before {
+      border-bottom-color: #bcb6b3 !important;
+    }
+    .flatpickr-calendar::after {
+      margin: -3px -5px !important;
+    }
+    .dayContainer {
+      width: 100%;
+      min-width: 100%;
+      max-width: 100%;
+    }
+
+    .flatpickr-days {
+      width: 100%;
+    }
+  </style>
 </head>
 <body>
   <h1>iOSでズームしたら嫌</h1>
-  <div>
-    <input type="text" id="pckr">
-  </div>
+  <dl id="pckr">
+    <dt>出でよ！カレンダー！！</dt>
+    <dd><input type="text" placeholder="タップしてね" data-input> </dd>
+  </dl>
   <p>
     じゅげむじゅげむ　ごこうのすりきれ　かいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつ　くうねるところにすむところ　やぶらこうじのぶらこうじ　ぱいぽぱいぽぱいぽのしゅーりんがん　しゅーりんがんのぐーりんだい　ぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ
     じゅげむじゅげむ　ごこうのすりきれ　かいじゃりすいぎょのすいぎょうまつうんらいまつふうらいまつ　くうねるところにすむところ　やぶらこうじのぶらこうじ　ぱいぽぱいぽぱいぽのしゅーりんがん　しゅーりんがんのぐーりんだい　ぐーりんだいのぽんぽこぴーのぽんぽこなのちょうきゅうめいのちょうすけ
